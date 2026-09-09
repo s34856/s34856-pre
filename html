@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | ทัตธน พลรัตน์</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #002466; /* สีน้ำเงินมหิดล */
+            --secondary-color: #F8B400; /* สีเหลืองทอง */
+            --bg-color: #F8F9FA;
+            --text-color: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 36, 102, 0.85), rgba(0, 36, 102, 0.95)), url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: white;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            max-width: 800px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(248, 180, 0, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            display: block;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            text-align: center;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .target-box {
+            background: rgba(0, 36, 102, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--secondary-color);
+            margin-top: 20px;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tag {
+            align-self: flex-start;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card-body h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--primary-color);
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            nav ul {
+                gap: 10px;
+            }
+            .card img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">T. Portfolio</div>
+        <ul>
+            <li><a href="#home">หน้าแรก</a></li>
+            <li><a href="#about">ประวัติส่วนตัว</a></li>
+            <li><a href="#portfolio">ผลงาน</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home">
+        <h1>นายทัตธน พลรัตน์</h1>
+        <h2>ความหลงใหลในตัวเลขและการแก้ปัญหาอย่างเป็นระบบ คือจุดเริ่มต้นของทุกสิ่ง</h2>
+        <a href="#portfolio" class="btn">ดูผลงานเกียรติบัตรของผม</a>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2 class="section-title">เกี่ยวกับผม</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>สวัสดีครับ ผม <strong>นายทัตธน พลรัตน์</strong> ปัจจุบันกำลังศึกษาอยู่ระดับชั้นมัธยมศึกษาตอนปลายที่ <span class="highlight">โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</span> จังหวัดชลบุรี</p>
+                <br>
+                <p>ผมมีความสนใจและรักในการเรียนรู้ด้าน <span class="highlight">คณิตศาสตร์</span> เป็นอย่างมาก ผมเชื่อว่าคณิตศาสตร์เป็นรากฐานสำคัญในการทำความเข้าใจโลกและแก้ไขปัญหาต่างๆ ตลอดช่วงมัธยมศึกษา ผมได้พัฒนาศักยภาพตนเองอย่างต่อเนื่องผ่านการเข้าค่ายวิชาการและการแข่งขันระดับประเทศ</p>
+                
+                <div class="target-box">
+                    <strong>เป้าหมายการศึกษาต่อ:</strong> 
+                    <br>มีความมุ่งมั่นตั้งใจที่จะเข้าศึกษาต่อใน <span class="highlight">คณะวิทยาศาสตร์ ภาควิชาคณิตศาสตร์ มหาวิทยาลัยมหิดล</span> 
+                    <br>และมีความสนใจที่จะรับ <span class="highlight">ทุนโครงการ สควค.</span> เพื่อพัฒนาตนเองเป็นบุคลากรคุณภาพของประเทศ
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="container">
+        <h2 class="section-title">ผลงานเด่นและการเข้าร่วมกิจกรรม</h2>
+        <div class="portfolio-grid">
+            
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://placehold.co/600x400/002466/FFFFFF?text=World+Of+MathS+Camp" alt="ค่ายคณิตศาสตร์ มหิดล">
+                <div class="card-body">
+                    <span class="tag">ค่ายวิชาการ</span>
+                    <h3>ค่ายดินแดนแห่งคณิตศาสตร์ (World Of MathS Camp)</h3>
+                    <p>เข้าร่วมกิจกรรมค่ายคณิตศาสตร์ ครั้งที่ 1 จัดโดยภาควิชาคณิตศาสตร์ ณ คณะวิทยาศาสตร์ มหาวิทยาลัยมหิดล (วิทยาเขตศาลายา)</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://placehold.co/600x400/002466/FFFFFF?text=MU+Mental+Math" alt="MU Mental Math">
+                <div class="card-body">
+                    <span class="tag">การแข่งขัน</span>
+                    <h3>MU Mental Math Competition 2025</h3>
+                    <p>เข้าร่วมการแข่งขันคิดเลขเร็ว จัดโดยภาควิชาคณิตศาสตร์ คณะวิทยาศาสตร์ มหาวิทยาลัยมหิดล</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="https://placehold.co/600x400/F8B400/002466?text=NAT+Genius+Camp" alt="สวช. คณิตศาสตร์ประยุกต์">
+                <div class="card-body">
+                    <span class="tag">สอบคัดเลือก / ค่าย</span>
+                    <h3>ค่ายอัจฉริยภาพวิชาการ สวช. ภาคคณิตศาสตร์ประยุกต์</h3>
+                    <p>ผ่านการสอบคัดเลือกเป็นตัวแทนนักเรียนเข้าร่วมค่ายอัจฉริยภาพวิชาการ สวช. ระดับมัธยมศึกษาตอนปลาย ประจำปี พ.ศ. 2568</p>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <img src="https://placehold.co/600x400/F8B400/002466?text=Math+Bronze+Medal" alt="เหรียญทองแดง คณิตศาสตร์">
+                <div class="card-body">
+                    <span class="tag">รางวัลระดับประเทศ</span>
+                    <h3>สอบแข่งขันวัดอัจฉริยภาพทางวิชาการ วิชาคณิตศาสตร์</h3>
+                    <p>ได้รับรางวัลเหรียญทองแดง (คะแนน 78/100) โครงการสอบแข่งขันวัดอัจฉริยภาพทางวิชาการออนไลน์ ครั้งที่ 2 ปีการศึกษา 2568</p>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card">
+                <img src="https://placehold.co/600x400/002466/FFFFFF?text=CS+Theory+Winter+School" alt="CS Theory Kaset">
+                <div class="card-body">
+                    <span class="tag">วิทยาการคอมพิวเตอร์</span>
+                    <h3>CS Theory Winter School</h3>
+                    <p>เข้าร่วมโครงการอบรมเชิงทฤษฎีด้านวิทยาการคอมพิวเตอร์ ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</p>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card">
+                <img src="https://placehold.co/600x400/002466/FFFFFF?text=CHULA+MOOC" alt="CHULA MOOC">
+                <div class="card-body">
+                    <span class="tag">คอร์สออนไลน์</span>
+                    <h3>CHULA MOOC: Mastering AI-Powered Design</h3>
+                    <p>ผ่านการอบรมหลักสูตรการใช้เครื่องมือ AI ใน Canva เพื่อเพิ่มประสิทธิภาพการทำงานและการออกแบบ จากจุฬาลงกรณ์มหาวิทยาลัย</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Thatton Polrat | E-Portfolio for University Admission</p>
+    </footer>
+
+</body>
+</html>
